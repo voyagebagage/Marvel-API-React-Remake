@@ -27,10 +27,9 @@ function Characters() {
   }, []);
 
   return !isLoading ? (
-    <div className="character-page">
-      coucou
+    <div className="character-page wrapper">
       {data.results.map((oneMarvel, index) => (
-        <div key={oneMarvel._id}>
+        <div className="marvelCard" key={oneMarvel._id}>
           <MarvelCard oneMarvel={oneMarvel} />
         </div>
       ))}
