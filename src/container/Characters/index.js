@@ -1,5 +1,5 @@
 import "./index.css";
-import MarvelCard from "/Users/sedatif2/Documents/REACTEUR/-portfolio/marvel-api-react-remake/src/components/MarvelCard";
+import MarvelCard from "../../components/MarvelCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
