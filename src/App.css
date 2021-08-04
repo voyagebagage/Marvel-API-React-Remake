@@ -1,1 +1,31 @@
 /* Other rules */
+.header-logo-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.header-logo-wrap {
+  height: 60px;
+  border: solid 3px brown;
+  background-color: red;
+}
+#headerLogo {
+  height: 100%;
+}
+.menu {
+  border: solid black 1px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+div {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  /* padding: 0; */
+}
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
