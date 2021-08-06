@@ -1,0 +1,15 @@
+#marvelPic {
+  height: 18vh;
+  width: 100%;
+  object-fit: cover;
+}
+.marvelDescription {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.oneCard {
+  /* min-height: 300px; */
+}

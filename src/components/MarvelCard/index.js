@@ -1,7 +1,7 @@
-// import "./index.css";
+import "./index.css";
 export default function MarvelCard({ oneMarvel }) {
   const { name, thumbnail, description } = oneMarvel;
-  console.log(oneMarvel);
+  // console.log(oneMarvel);
   return (
     <
       // className="wrapper"

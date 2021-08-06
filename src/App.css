@@ -17,6 +17,7 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  /* text-decoration: none; */
 }
 div {
   box-sizing: border-box;
@@ -28,4 +29,7 @@ body {
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
+}
+.menu p {
+  text-decoration: none;
 }
