@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function Marvel() {
+function ComicsPerMarvel() {
   const [data, setData] = useState([]);
   const params = useParams();
   const id = params.characterId;
@@ -35,4 +35,4 @@ function Marvel() {
   );
 }
 
-export default Marvel;
+export default ComicsPerMarvel;

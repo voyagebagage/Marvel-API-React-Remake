@@ -4,11 +4,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Characters({ data, setData }) {
+function Characters({ data, setData, skip, setSkip, limit, setLimit }) {
   const [isLoading, setIsLoading] = useState(true);
   const [name, setName] = useState("");
-  const [skip, setSkip] = useState(0);
-  const [limit, setLimit] = useState(100);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +26,7 @@ function Characters({ data, setData }) {
 
   return !isLoading ? (
     <div className="character-page wrapper">
-      {data.results.map((oneMarvel, index) => (
+      {data.results.map((oneMarvel) => (
         <Link
           className="marvelCard"
           key={oneMarvel._id}

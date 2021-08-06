@@ -2,7 +2,7 @@ import "./App.css";
 import Characters from "./container/Characters";
 import Comics from "./container/Comics";
 import Favorites from "./container/Favorites";
-import Marvel from "./container/Marvel";
+import ComicsPerMarvel from "./container/ComicsPerMarvel";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState } from "react";
@@ -11,7 +11,8 @@ import headerLogo from "./assets/img/headerLogo.png";
 
 function App() {
   const [data, setData] = useState([]);
-
+  const [skip, setSkip] = useState(0);
+  const [limit, setLimit] = useState(100);
   return (
     <Router>
       <div className="header-logo-wrap wrapper">
@@ -32,17 +33,31 @@ function App() {
 
       <Switch>
         <Route path="/comics/:characterId">
-          <Marvel />
+          <ComicsPerMarvel />
         </Route>
         <Route path="/comics">
-          <Comics />
+          <Comics
+            data={data}
+            setData={setData}
+            skip={skip}
+            setSkip={setSkip}
+            limit={limit}
+            setLimit={setLimit}
+          />
         </Route>
         <Route path="/favorites">
           <Favorites />
         </Route>
 
         <Route path="/">
-          <Characters data={data} setData={setData} />
+          <Characters
+            data={data}
+            setData={setData}
+            skip={skip}
+            setSkip={setSkip}
+            limit={limit}
+            setLimit={setLimit}
+          />
         </Route>
       </Switch>
     </Router>
