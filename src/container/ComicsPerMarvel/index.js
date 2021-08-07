@@ -17,8 +17,6 @@ function ComicsPerMarvel() {
         );
         setData(response.data.comics);
         console.log(response.data.comics);
-        console.log(data, "------------");
-        // setIsLoading(false);
       } catch (e) {
         console.log(e);
       }
