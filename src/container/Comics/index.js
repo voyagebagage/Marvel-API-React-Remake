@@ -1,8 +1,10 @@
+import "./index.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 import ComicCard from "../../components/ComicCard";
 import Search from "../../components/Search";
+import Pagination from "../../components/Pagination";
 
 function Comics({
   data,
@@ -33,23 +35,26 @@ function Comics({
       }
     };
     fetchData();
-  }, []);
+  }, [skip]);
 
   return isLoading ? (
     <div>pipi</div>
   ) : (
-    <>
+    <div className="comics-page">
       <Search
         handleSubmit={handleSubmit}
         value={title}
         setSearch={setTitle}
         placeholder={"Looking for a Comic?"}
       />
+      <Pagination skip={skip} setSkip={setSkip} limit={limit} />
+      {console.log(skip, "comos")}
+
       {data.results &&
         data.results.map((comic, index) => (
           <ComicCard key={comic._id} comic={comic} index={index} />
         ))}
-    </>
+    </div>
   );
 }
 

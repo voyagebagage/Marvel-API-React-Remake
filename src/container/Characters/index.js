@@ -1,6 +1,7 @@
 import "./index.css";
 import MarvelCard from "../../components/MarvelCard";
 import Search from "../../components/Search";
+import Pagination from "../../components/Pagination";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -34,7 +35,7 @@ function Characters({
       }
     };
     fetchData();
-  }, []);
+  }, [skip]);
 
   return !isLoading ? (
     <>
@@ -44,6 +45,8 @@ function Characters({
         setSearch={setName}
         placeholder={"Looking for a Marvel?"}
       />
+      <Pagination skip={skip} setSkip={setSkip} limit={limit} />
+      {console.log(skip)}
       <div className="character-page wrapper">
         {data.results.map((oneMarvel) => (
           <Link

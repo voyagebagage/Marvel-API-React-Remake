@@ -12,15 +12,16 @@ import headerLogo from "./assets/img/headerLogo.png";
 
 function App() {
   const [data, setData] = useState([]);
-  const [skip, setSkip] = useState(0);
-  const [limit, setLimit] = useState(100);
+  const [skipCharacters, setSkipCharacters] = useState(0);
+  const [skipComics, setSkipComics] = useState(0);
+  const [limit, setLimit] = useState(16);
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
 
   const handleSubmitMarvel = async (e) => {
     e.preventDefault();
     const response = await axios.get(
-      `https://marvel-api-node-oliv-dev.herokuapp.com/search-character?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}&name=${name}`
+      `https://marvel-api-node-oliv-dev.herokuapp.com/search-character?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skipCharacters}&name=${name}`
     );
     setData(response.data);
     setName("");
@@ -28,11 +29,14 @@ function App() {
   const handleSubmitComic = async (e) => {
     e.preventDefault();
     const response = await axios.get(
-      `https://marvel-api-node-oliv-dev.herokuapp.com/search-comic?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}&title=${title}`
+      `https://marvel-api-node-oliv-dev.herokuapp.com/search-comic?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skipComics}&title=${title}`
     );
     setData(response.data);
     setTitle("");
   };
+  // const handleNextPageMarvel = () => {
+  //   setSkip(skip + 16);
+  // };
 
   return (
     <Router>
@@ -60,8 +64,8 @@ function App() {
           <Comics
             data={data}
             setData={setData}
-            skip={skip}
-            setSkip={setSkip}
+            skip={skipComics}
+            setSkip={setSkipComics}
             limit={limit}
             setLimit={setLimit}
             title={title}
@@ -77,8 +81,8 @@ function App() {
           <Characters
             data={data}
             setData={setData}
-            skip={skip}
-            setSkip={setSkip}
+            skip={skipCharacters}
+            setSkip={setSkipCharacters}
             limit={limit}
             setLimit={setLimit}
             name={name}
