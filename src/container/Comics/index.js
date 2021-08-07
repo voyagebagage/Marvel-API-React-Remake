@@ -1,9 +1,20 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import ComicCard from "../../components/ComicCard";
 
-function Comics({ data, setData, skip, setSkip, limit, setLimit }) {
-  const [title, setTitle] = useState("");
+import ComicCard from "../../components/ComicCard";
+import Search from "../../components/Search";
+
+function Comics({
+  data,
+  setData,
+  skip,
+  setSkip,
+  limit,
+  setLimit,
+  title,
+  setTitle,
+  handleSubmit,
+}) {
   // const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,6 +39,12 @@ function Comics({ data, setData, skip, setSkip, limit, setLimit }) {
     <div>pipi</div>
   ) : (
     <>
+      <Search
+        handleSubmit={handleSubmit}
+        value={title}
+        setSearch={setTitle}
+        placeholder={"Looking for a Comic?"}
+      />
       {data.results &&
         data.results.map((comic, index) => (
           <ComicCard key={comic._id} comic={comic} index={index} />

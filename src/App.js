@@ -15,14 +15,23 @@ function App() {
   const [skip, setSkip] = useState(0);
   const [limit, setLimit] = useState(100);
   const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmitMarvel = async (e) => {
     e.preventDefault();
     const response = await axios.get(
       `https://marvel-api-node-oliv-dev.herokuapp.com/search-character?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}&name=${name}`
     );
     setData(response.data);
     setName("");
+  };
+  const handleSubmitComic = async (e) => {
+    e.preventDefault();
+    const response = await axios.get(
+      `https://marvel-api-node-oliv-dev.herokuapp.com/search-comic?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}&title=${title}`
+    );
+    setData(response.data);
+    setTitle("");
   };
 
   return (
@@ -55,6 +64,9 @@ function App() {
             setSkip={setSkip}
             limit={limit}
             setLimit={setLimit}
+            title={title}
+            setTitle={setTitle}
+            handleSubmit={handleSubmitComic}
           />
         </Route>
         <Route path="/favorites">
@@ -71,7 +83,7 @@ function App() {
             setLimit={setLimit}
             name={name}
             setName={setName}
-            handleSubmit={handleSubmit}
+            handleSubmit={handleSubmitMarvel}
           />
         </Route>
       </Switch>
