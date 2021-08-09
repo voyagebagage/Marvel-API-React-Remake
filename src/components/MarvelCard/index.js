@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 export default function MarvelCard({
   data,
   saveCharacterInFavoris,
-  setSaveCharacterDetails,
+  setCharacterDetails,
 }) {
   return (
     <div className="character-page wrapper">
       {data.map((oneMarvel) => {
         const { name, thumbnail, description } = oneMarvel;
         return (
-          <div className="marvelCard">
+          <div className="marvelCard" key={oneMarvel._id}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <p>{name}</p>
               <input
@@ -21,10 +21,9 @@ export default function MarvelCard({
               />
             </div>
             <Link
-              key={oneMarvel._id}
               to={`/comics/${oneMarvel._id}`}
               className="noDecoration"
-              onClick={() => setSaveCharacterDetails(oneMarvel)}
+              onClick={() => setCharacterDetails(oneMarvel)}
             >
               <img
                 id="marvelPic"

@@ -18,7 +18,7 @@ function Characters({
   setName,
   handleSubmit,
   saveCharacterInFavoris,
-  setSaveCharacterDetails,
+  setCharacterDetails,
 }) {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -52,7 +52,7 @@ function Characters({
       <MarvelCard
         data={data.results}
         saveCharacterInFavoris={saveCharacterInFavoris}
-        setSaveCharacterDetails={setSaveCharacterDetails}
+        setCharacterDetails={setCharacterDetails}
       />
     </>
   ) : (

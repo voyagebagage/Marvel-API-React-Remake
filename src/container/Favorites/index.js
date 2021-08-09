@@ -4,7 +4,6 @@ import ComicCard from "../../components/ComicCard";
 import MarvelCard from "../../components/MarvelCard";
 
 function Favorites({ favComics, favCharacters }) {
-  const [isLoading, setIsLoading] = useState(true);
   const [toggleCharCom, setToggleCharCom] = useState(false);
   return (
     <div>
@@ -17,7 +16,11 @@ function Favorites({ favComics, favCharacters }) {
         </h3>
       </div>
       {!toggleCharCom ? (
-        <MarvelCard data={favCharacters} />
+        favCharacters ? (
+          <MarvelCard data={favCharacters} />
+        ) : (
+          <ComicCard data={favComics} />
+        )
       ) : (
         <ComicCard data={favComics} />
       )}

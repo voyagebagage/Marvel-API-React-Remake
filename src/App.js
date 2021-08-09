@@ -3,6 +3,8 @@ import Characters from "./container/Characters";
 import Comics from "./container/Comics";
 import Favorites from "./container/Favorites";
 import ComicsPerMarvel from "./container/ComicsPerMarvel";
+import LogIn from "./container/LogIn";
+import SignUp from "./container/SignUp";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState } from "react";
@@ -19,7 +21,7 @@ function App() {
   const [title, setTitle] = useState("");
   const [favCharacters, setFavCharacters] = useState([]);
   const [favComics, setFavComics] = useState([]);
-  const [saveCharacterDetails, setSaveCharacterDetails] = useState({});
+  const [characterDetails, setCharacterDetails] = useState({});
 
   //_________________________________________________________________
   const handleSubmitMarvel = async (e) => {
@@ -85,6 +87,10 @@ function App() {
       <div className="header-logo-wrap wrapper">
         <img src={headerLogo} alt="logomarvel" id="headerLogo" />
 
+        <p>
+          <Link to="/logIn">Log-in/Sign-up</Link>
+        </p>
+
         <div className="menu">
           <p>
             <Link to="/" onClick={() => setLimit(16)}>
@@ -104,7 +110,7 @@ function App() {
         <Route path="/comics/:characterId">
           <ComicsPerMarvel
             saveComicInFavoris={saveFavoris}
-            saveCharacterDetails={saveCharacterDetails}
+            characterDetails={characterDetails}
           />
         </Route>
         <Route path="/comics">
@@ -119,8 +125,6 @@ function App() {
             setTitle={setTitle}
             handleSubmit={handleSubmitComic}
             saveComicInFavoris={saveFavoris}
-            // favComics={favComics}
-            // setFavComics={setFavComics}
           />
         </Route>
         <Route path="/favorites">
@@ -131,7 +135,12 @@ function App() {
             setFavCharacters={setFavCharacters}
           />
         </Route>
-
+        <Route path="/logIn">
+          <LogIn />
+        </Route>
+        <Route path="/signUp">
+          <SignUp />
+        </Route>
         <Route path="/">
           <Characters
             data={data}
@@ -142,11 +151,9 @@ function App() {
             setLimit={setLimit}
             name={name}
             setName={setName}
-            setSaveCharacterDetails={setSaveCharacterDetails}
+            setCharacterDetails={setCharacterDetails}
             handleSubmit={handleSubmitMarvel}
             saveCharacterInFavoris={saveFavoris}
-            // favCharacters={favCharacters}
-            // setFavCharacters={setFavCharacters}
           />
         </Route>
       </Switch>

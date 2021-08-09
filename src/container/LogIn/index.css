@@ -1,0 +1,11 @@
+.login-page,
+.signUp-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+form > input {
+  display: flex;
+  /* flex-direction: column; */
+}
