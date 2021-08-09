@@ -3,6 +3,7 @@ export default function Search({
   setSearch,
   placeholder,
   handleSubmit,
+  setLimit,
 }) {
   return (
     <div>
@@ -15,7 +16,10 @@ export default function Search({
           //   className="wrapper"
           value={value}
           autoFocus
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setLimit(100);
+          }}
         />
         <input type="submit" value="SEARCH" />
       </form>

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function ComicsPerMarvel() {
+function ComicsPerMarvel({ saveComicInFavoris, saveCharacterDetails }) {
   const [data, setData] = useState([]);
   const params = useParams();
   const id = params.characterId;
@@ -23,12 +23,11 @@ function ComicsPerMarvel() {
     };
     fetchData();
   }, [id]);
+  console.log(data);
   return (
     <>
-      {data &&
-        data.map((comic, index) => (
-          <ComicCard key={comic._id} comic={comic} index={index} />
-        ))}
+      <p>{saveCharacterDetails.name}</p>
+      <ComicCard data={data} saveComicInFavoris={saveComicInFavoris} />
     </>
   );
 }

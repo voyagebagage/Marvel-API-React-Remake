@@ -5,7 +5,7 @@ import Pagination from "../../components/Pagination";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function Characters({
   data,
@@ -17,9 +17,10 @@ function Characters({
   name,
   setName,
   handleSubmit,
+  saveCharacterInFavoris,
+  setSaveCharacterDetails,
 }) {
   const [isLoading, setIsLoading] = useState(true);
-  const [text, setText] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +36,7 @@ function Characters({
       }
     };
     fetchData();
-  }, [skip]);
+  }, [skip, limit]);
 
   return !isLoading ? (
     <>
@@ -44,20 +45,15 @@ function Characters({
         value={name}
         setSearch={setName}
         placeholder={"Looking for a Marvel?"}
+        setLimit={setLimit}
       />
       <Pagination skip={skip} setSkip={setSkip} limit={limit} />
-      {console.log(skip)}
-      <div className="character-page wrapper">
-        {data.results.map((oneMarvel) => (
-          <Link
-            className="marvelCard"
-            key={oneMarvel._id}
-            to={`/comics/${oneMarvel._id}`}
-          >
-            <MarvelCard oneMarvel={oneMarvel} />
-          </Link>
-        ))}
-      </div>
+
+      <MarvelCard
+        data={data.results}
+        saveCharacterInFavoris={saveCharacterInFavoris}
+        setSaveCharacterDetails={setSaveCharacterDetails}
+      />
     </>
   ) : (
     <span>LoADING</span>

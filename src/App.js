@@ -17,7 +17,11 @@ function App() {
   const [limit, setLimit] = useState(16);
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
+  const [favCharacters, setFavCharacters] = useState([]);
+  const [favComics, setFavComics] = useState([]);
+  const [saveCharacterDetails, setSaveCharacterDetails] = useState({});
 
+  //_________________________________________________________________
   const handleSubmitMarvel = async (e) => {
     e.preventDefault();
     const response = await axios.get(
@@ -26,6 +30,8 @@ function App() {
     setData(response.data);
     setName("");
   };
+
+  //_________________________________________________________________
   const handleSubmitComic = async (e) => {
     e.preventDefault();
     const response = await axios.get(
@@ -34,9 +40,45 @@ function App() {
     setData(response.data);
     setTitle("");
   };
-  // const handleNextPageMarvel = () => {
-  //   setSkip(skip + 16);
-  // };
+  // =================================================================
+  const saveFavoris = async (item, whereFrom) => {
+    try {
+      let newTab =
+        whereFrom === "character"
+          ? [...favCharacters]
+          : whereFrom === "comic"
+          ? [...favComics]
+          : null;
+
+      let alreadyInLocalStorage = false;
+      newTab.forEach((e) => {
+        if (e._id === item._id) {
+          alreadyInLocalStorage = true;
+        }
+      });
+
+      if (alreadyInLocalStorage) {
+        alert("nope already Fave");
+      } else {
+        if (whereFrom === "character") {
+          favCharacters.push(item);
+          const stringFav = JSON.stringify(favCharacters);
+
+          await localStorage.setItem("favoneMarvels", stringFav);
+        } else if (whereFrom === "comic") {
+          favComics.push(item);
+          const stringFav = JSON.stringify(favComics);
+
+          await localStorage.setItem("favComics", stringFav);
+          alert("succes update");
+        }
+      }
+    } catch (error) {
+      console.log("-------------you got a saving issue!-----------");
+    }
+    console.log("Done.");
+  };
+  // =================================================================
 
   return (
     <Router>
@@ -45,7 +87,9 @@ function App() {
 
         <div className="menu">
           <p>
-            <Link to="/">Characters</Link>
+            <Link to="/" onClick={() => setLimit(16)}>
+              Characters
+            </Link>
           </p>
           <p>
             <Link to="/comics">Comics</Link>
@@ -58,7 +102,10 @@ function App() {
 
       <Switch>
         <Route path="/comics/:characterId">
-          <ComicsPerMarvel />
+          <ComicsPerMarvel
+            saveComicInFavoris={saveFavoris}
+            saveCharacterDetails={saveCharacterDetails}
+          />
         </Route>
         <Route path="/comics">
           <Comics
@@ -71,10 +118,18 @@ function App() {
             title={title}
             setTitle={setTitle}
             handleSubmit={handleSubmitComic}
+            saveComicInFavoris={saveFavoris}
+            // favComics={favComics}
+            // setFavComics={setFavComics}
           />
         </Route>
         <Route path="/favorites">
-          <Favorites />
+          <Favorites
+            favComics={favComics}
+            setFavComics={setFavComics}
+            favCharacters={favCharacters}
+            setFavCharacters={setFavCharacters}
+          />
         </Route>
 
         <Route path="/">
@@ -87,7 +142,11 @@ function App() {
             setLimit={setLimit}
             name={name}
             setName={setName}
+            setSaveCharacterDetails={setSaveCharacterDetails}
             handleSubmit={handleSubmitMarvel}
+            saveCharacterInFavoris={saveFavoris}
+            // favCharacters={favCharacters}
+            // setFavCharacters={setFavCharacters}
           />
         </Route>
       </Switch>

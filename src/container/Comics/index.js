@@ -16,8 +16,8 @@ function Comics({
   title,
   setTitle,
   handleSubmit,
+  saveComicInFavoris,
 }) {
-  // const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function Comics({
   }, [skip]);
 
   return isLoading ? (
-    <div>pipi</div>
+    <div>Loading</div>
   ) : (
     <div className="comics-page">
       <Search
@@ -46,14 +46,10 @@ function Comics({
         value={title}
         setSearch={setTitle}
         placeholder={"Looking for a Comic?"}
+        setLimit={setLimit}
       />
       <Pagination skip={skip} setSkip={setSkip} limit={limit} />
-      {console.log(skip, "comos")}
-
-      {data.results &&
-        data.results.map((comic, index) => (
-          <ComicCard key={comic._id} comic={comic} index={index} />
-        ))}
+      <ComicCard data={data.results} saveComicInFavoris={saveComicInFavoris} />
     </div>
   );
 }

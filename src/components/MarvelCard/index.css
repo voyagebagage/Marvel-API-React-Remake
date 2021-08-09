@@ -10,6 +10,6 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
-.oneCard {
-  /* min-height: 300px; */
+.noDecoration {
+  text-decoration: none;
 }
