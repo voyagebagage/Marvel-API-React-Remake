@@ -8,20 +8,29 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (username && email && password && confirmPassword) {
       if (password === confirmPassword) {
-        alert(
-          "c'est correc en chris de tabernac tu es dans notre data base 🎉  "
-        );
+        try {
+          const response = await axios.post(
+            "https://marvel-api-node-oliv-dev.herokuapp.com/user/create",
+            { username: username, email: email, password: password }
+          );
+          console.log(response);
+          alert(
+            "c'est correc en chris de tabernac tu es dans notre data base 🎉  "
+          );
+        } catch (error) {
+          console.log(error.response.data.error);
+        }
       }
     }
   };
 
   return (
     <div className="signUp-page wrapper">
-      <span>under construction, back undone</span>
+      {/* <span>under construction, back undone</span> */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
