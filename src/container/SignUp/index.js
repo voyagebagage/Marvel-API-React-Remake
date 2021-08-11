@@ -1,5 +1,8 @@
 import "./index.css";
+
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
+
 import axios from "axios";
 
 function SignUp() {
@@ -7,6 +10,8 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  let history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,10 +26,15 @@ function SignUp() {
           alert(
             "c'est correc en chris de tabernac tu es dans notre data base 🎉  "
           );
+          history.push("/logIn");
         } catch (error) {
           console.log(error.response.data.error);
         }
+      } else {
+        alert("password aren't the same");
       }
+    } else {
+      alert("missing field(s)");
     }
   };
 

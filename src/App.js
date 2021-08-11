@@ -22,7 +22,8 @@ function App() {
   const [favCharacters, setFavCharacters] = useState([]);
   const [favComics, setFavComics] = useState([]);
   const [characterDetails, setCharacterDetails] = useState({});
-
+  const [token, setToken] = useState("");
+  const [username, setUsername] = useState("");
   //_________________________________________________________________
   const handleSubmitMarvel = async (e) => {
     e.preventDefault();
@@ -81,15 +82,25 @@ function App() {
     console.log("Done.");
   };
   // =================================================================
+  const handleClickLogOut = () => {
+    setUsername("");
+    setToken("");
+  };
 
   return (
     <Router>
       <div className="header-logo-wrap wrapper">
         <img src={headerLogo} alt="logomarvel" id="headerLogo" />
-
-        <p>
-          <Link to="/logIn">Log-in/Sign-up</Link>
-        </p>
+        {token ? (
+          <p>
+            Welcome on my marvel API {username}, enjoy
+            <input type="button" value="log-out" onClick={handleClickLogOut} />
+          </p>
+        ) : (
+          <p>
+            <Link to="/logIn">Log-in/Sign-up</Link>
+          </p>
+        )}
 
         <div className="menu">
           <p>
@@ -136,7 +147,7 @@ function App() {
           />
         </Route>
         <Route path="/logIn">
-          <LogIn />
+          <LogIn setToken={setToken} setUsername={setUsername} />
         </Route>
         <Route path="/signUp">
           <SignUp />
