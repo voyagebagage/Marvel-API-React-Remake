@@ -33,6 +33,7 @@ export default function MarvelCard({
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <p>{name}</p>
               <FontAwesomeIcon
+                className="star"
                 icon="star"
                 style={
                   oneMarvel.active

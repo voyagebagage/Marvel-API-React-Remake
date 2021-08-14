@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import "./index.css";
+
 import ComicCard from "../../components/ComicCard";
 import MarvelCard from "../../components/MarvelCard";
 
@@ -8,13 +10,9 @@ function Favorites({ favComics, favCharacters, updateFavoris, token }) {
   const [toggleCharCom, setToggleCharCom] = useState(false);
   return (
     <div>
-      <div style={{ display: "flex" }}>
-        <h3 style={{ flex: 1 }} onClick={() => setToggleCharCom(false)}>
-          Characters
-        </h3>
-        <h3 style={{ flex: 1 }} onClick={() => setToggleCharCom(true)}>
-          Comics
-        </h3>
+      <div className="toggleWrapper">
+        <h3 onClick={() => setToggleCharCom(false)}>Characters</h3>
+        <h3 onClick={() => setToggleCharCom(true)}>Comics</h3>
       </div>
 
       {token ? (

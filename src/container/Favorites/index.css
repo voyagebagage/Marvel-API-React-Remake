@@ -1,0 +1,9 @@
+.toggleWrapper {
+  display: flex;
+}
+.toggleWrapper h3:hover {
+  cursor: pointer;
+}
+.toggleWrapper h3 {
+  flex: 1;
+}

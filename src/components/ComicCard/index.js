@@ -13,7 +13,7 @@ export default function ComicCard({ data, setData, updateComicInFavoris }) {
       newTab.forEach((elem) => (elem = { ...elem, active: false }));
       newTab[index].active = !newTab.active;
       setData(newTab);
-      updateComicInFavoris(comic, "comic");
+      updateComicInFavoris(newTab[index], "comic");
     }
   };
   return (
@@ -32,6 +32,7 @@ export default function ComicCard({ data, setData, updateComicInFavoris }) {
                 <p className="title">{comic.title}</p>
                 <FontAwesomeIcon
                   icon="star"
+                  className="star"
                   style={
                     comic.active
                       ? {

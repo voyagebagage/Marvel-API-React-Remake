@@ -1,3 +1,5 @@
+import "./index.css";
+
 import ComicCard from "../../components/ComicCard";
 
 import { useParams } from "react-router-dom";
@@ -30,7 +32,7 @@ function ComicsPerMarvel({ updateFavoris, characterDetails }) {
     <>
       <p>{name}</p>
       <img
-        // id="marvelPic"
+        id="marvelPicDescription"
         src={`${thumbnail.path}.${thumbnail.extension}`}
         alt=""
       />
