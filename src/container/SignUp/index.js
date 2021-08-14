@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import axios from "axios";
 
-function SignUp() {
+function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,13 +22,15 @@ function SignUp() {
             "https://marvel-api-node-oliv-dev.herokuapp.com/user/create",
             { username: username, email: email, password: password }
           );
-          console.log(response);
-          alert(
-            "c'est correc en chris de tabernac tu es dans notre data base 🎉  "
-          );
-          history.push("/logIn");
+          console.log(response.data.token);
+          if (response.data.token) {
+            setUser(response.data.token, response.data.username);
+            history.push("/");
+          } else {
+            alert("error");
+          }
         } catch (error) {
-          console.log(error.response.data.error);
+          console.log(error.message);
         }
       } else {
         alert("password aren't the same");

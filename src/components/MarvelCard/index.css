@@ -13,3 +13,11 @@
 .noDecoration {
   text-decoration: none;
 }
+.starIcon {
+  color: "lightgrey";
+  height: 30;
+  width: 30;
+}
+.goldIcon {
+  color: "gold";
+}

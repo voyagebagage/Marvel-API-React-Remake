@@ -5,7 +5,6 @@ import Pagination from "../../components/Pagination";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
 
 function Characters({
   data,
@@ -17,7 +16,7 @@ function Characters({
   name,
   setName,
   handleSubmit,
-  saveCharacterInFavoris,
+  updateCharacterInFavoris,
   setCharacterDetails,
 }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,12 +24,26 @@ function Characters({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://marvel-api-node-oliv-dev.herokuapp.com/characters?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}`
-        );
-        setData(response.data);
-        // console.log(data);
-        setIsLoading(false);
+        //_____here we load favorites if there are any ___________
+        let parseStorage = JSON.parse(localStorage.getItem("favMarvels"));
+        if (parseStorage && parseStorage.length !== 0) {
+          data.forEach((elemData) => {
+            parseStorage.forEach((eParseStorage) => {
+              if (elemData._id === eParseStorage._id) {
+                data.splice(data.indexOf(elemData), 1, eParseStorage);
+              }
+            });
+          });
+          setData(data);
+          setIsLoading(false);
+          //______otherwise we do the request_______________
+        } else {
+          const response = await axios.get(
+            `https://marvel-api-node-oliv-dev.herokuapp.com/characters?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}`
+          );
+          setData(response.data.results);
+          setIsLoading(false);
+        }
       } catch (e) {
         console.log(e);
       }
@@ -50,8 +63,9 @@ function Characters({
       <Pagination skip={skip} setSkip={setSkip} limit={limit} />
 
       <MarvelCard
-        data={data.results}
-        saveCharacterInFavoris={saveCharacterInFavoris}
+        data={data}
+        setData={setData}
+        updateCharacterInFavoris={updateCharacterInFavoris}
         setCharacterDetails={setCharacterDetails}
       />
     </>

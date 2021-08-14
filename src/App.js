@@ -1,3 +1,4 @@
+//project imports
 import "./App.css";
 import Characters from "./container/Characters";
 import Comics from "./container/Comics";
@@ -5,15 +6,23 @@ import Favorites from "./container/Favorites";
 import ComicsPerMarvel from "./container/ComicsPerMarvel";
 import LogIn from "./container/LogIn";
 import SignUp from "./container/SignUp";
-
+//React imports
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState } from "react";
+//package imports
 import axios from "axios";
-
+import Cookies from "js-cookie";
+//assets
 import headerLogo from "./assets/img/headerLogo.png";
+//fontawesome import
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+library.add(faStar);
 
 function App() {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  const [dataCharacters, setDataCharacters] = useState([]);
+  const [dataComics, setDataComics] = useState([]);
   const [skipCharacters, setSkipCharacters] = useState(0);
   const [skipComics, setSkipComics] = useState(0);
   const [limit, setLimit] = useState(16);
@@ -22,15 +31,30 @@ function App() {
   const [favCharacters, setFavCharacters] = useState([]);
   const [favComics, setFavComics] = useState([]);
   const [characterDetails, setCharacterDetails] = useState({});
-  const [token, setToken] = useState("");
-  const [username, setUsername] = useState("");
+  const [token, setToken] = useState(Cookies.get("token") || null);
+  const [username, setUsername] = useState(Cookies.get("username") || "");
+
+  // =================================================================
+  const handleClickLogOut = () => {
+    setToken(null);
+    setUsername("");
+    Cookies.remove("token");
+    Cookies.remove("username");
+  };
+  //_________________________________________________________________
+  const setUser = (userToken, username) => {
+    setToken(userToken);
+    setUsername(username);
+    Cookies.set("token", userToken, { expires: 1 });
+    Cookies.set("username", username, { expires: 1 });
+  };
   //_________________________________________________________________
   const handleSubmitMarvel = async (e) => {
     e.preventDefault();
     const response = await axios.get(
       `https://marvel-api-node-oliv-dev.herokuapp.com/search-character?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skipCharacters}&name=${name}`
     );
-    setData(response.data);
+    setDataCharacters(response.data);
     setName("");
   };
 
@@ -40,11 +64,12 @@ function App() {
     const response = await axios.get(
       `https://marvel-api-node-oliv-dev.herokuapp.com/search-comic?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skipComics}&title=${title}`
     );
-    setData(response.data);
+    setDataComics(response.data);
     setTitle("");
   };
+
   // =================================================================
-  const saveFavoris = async (item, whereFrom) => {
+  const updateFavoris = async (item, whereFrom) => {
     try {
       let newTab =
         whereFrom === "character"
@@ -60,20 +85,31 @@ function App() {
         }
       });
 
+      //REMOVE FAV <----------------------------------------------------
       if (alreadyInLocalStorage) {
-        alert("nope already Fave");
+        if (whereFrom === "character") {
+          newTab.splice(favCharacters.indexOf(item), 1);
+          await setFavCharacters(newTab);
+          await localStorage.setItem(
+            "favMarvels",
+            JSON.stringify(favCharacters)
+          );
+        } else if (whereFrom === "comic") {
+          newTab.splice(favComics.indexOf(item), 1);
+          await setFavComics(newTab);
+          await localStorage.setItem("favComics", JSON.stringify(favComics));
+        }
+
+        //ADD FAV <----------------------------------------------------
       } else {
         if (whereFrom === "character") {
           favCharacters.push(item);
           const stringFav = JSON.stringify(favCharacters);
-
-          await localStorage.setItem("favoneMarvels", stringFav);
+          await localStorage.setItem("favMarvels", stringFav);
         } else if (whereFrom === "comic") {
           favComics.push(item);
           const stringFav = JSON.stringify(favComics);
-
           await localStorage.setItem("favComics", stringFav);
-          alert("succes update");
         }
       }
     } catch (error) {
@@ -82,10 +118,6 @@ function App() {
     console.log("Done.");
   };
   // =================================================================
-  const handleClickLogOut = () => {
-    setUsername("");
-    setToken("");
-  };
 
   return (
     <Router>
@@ -120,14 +152,14 @@ function App() {
       <Switch>
         <Route path="/comics/:characterId">
           <ComicsPerMarvel
-            saveComicInFavoris={saveFavoris}
+            updateFavoris={updateFavoris}
             characterDetails={characterDetails}
           />
         </Route>
         <Route path="/comics">
           <Comics
-            data={data}
-            setData={setData}
+            data={dataComics}
+            setData={setDataComics}
             skip={skipComics}
             setSkip={setSkipComics}
             limit={limit}
@@ -135,27 +167,28 @@ function App() {
             title={title}
             setTitle={setTitle}
             handleSubmit={handleSubmitComic}
-            saveComicInFavoris={saveFavoris}
+            updateComicInFavoris={updateFavoris}
           />
         </Route>
         <Route path="/favorites">
           <Favorites
+            token={token}
             favComics={favComics}
-            setFavComics={setFavComics}
             favCharacters={favCharacters}
-            setFavCharacters={setFavCharacters}
+            updateFavoris={updateFavoris}
           />
         </Route>
         <Route path="/logIn">
-          <LogIn setToken={setToken} setUsername={setUsername} />
+          <LogIn setUser={setUser} />
         </Route>
         <Route path="/signUp">
-          <SignUp />
+          <SignUp setUser={setUser} />
         </Route>
         <Route path="/">
           <Characters
-            data={data}
-            setData={setData}
+            // favCharacters={favCharacters}
+            data={dataCharacters}
+            setData={setDataCharacters}
             skip={skipCharacters}
             setSkip={setSkipCharacters}
             limit={limit}
@@ -164,7 +197,7 @@ function App() {
             setName={setName}
             setCharacterDetails={setCharacterDetails}
             handleSubmit={handleSubmitMarvel}
-            saveCharacterInFavoris={saveFavoris}
+            updateCharacterInFavoris={updateFavoris}
           />
         </Route>
       </Switch>

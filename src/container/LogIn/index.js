@@ -3,27 +3,27 @@ import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-function LogIn({ setToken, setUsername }) {
-  const [email, setEmail] = useState("");
+function LogIn({ setUser }) {
+  const [firstField, setFirstField] = useState("");
   const [password, setPassword] = useState("");
   let history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email && password) {
+    if (firstField && password) {
       try {
         const response = await axios.post(
           "https://marvel-api-node-oliv-dev.herokuapp.com/user/find",
-          { email: email, password: password }
+          { firstField: firstField, password: password }
         );
         console.log(response.data);
-        if (response) {
-          setToken(response.data.token);
-          setUsername(response.data.username);
+        if (response.data.token) {
+          setUser(response.data.token, response.data.username);
+          history.push("/");
+        } else {
+          alert("error");
         }
-
-        alert("t'es logé esti 🎉  ");
-        history.push("/");
+        // alert("t'es logé esti 🎉  ");
       } catch (error) {
         console.log(error.response.data.error);
       }
@@ -38,7 +38,7 @@ function LogIn({ setToken, setUsername }) {
           //   id="input"
           placeholder="email or username"
           type="text"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setFirstField(e.target.value)}
         />
         <input
           //   id="input"
