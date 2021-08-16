@@ -22,7 +22,7 @@ function SignUp({ setUser }) {
             "https://marvel-api-node-oliv-dev.herokuapp.com/user/create",
             { username: username, email: email, password: password }
           );
-          console.log(response.data.token);
+          // console.log(response.data.token);
           if (response.data.token) {
             setUser(response.data.token, response.data.username);
             history.push("/");

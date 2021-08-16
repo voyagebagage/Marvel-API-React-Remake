@@ -16,7 +16,7 @@ function LogIn({ setUser }) {
           "https://marvel-api-node-oliv-dev.herokuapp.com/user/find",
           { firstField: firstField, password: password }
         );
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.token) {
           setUser(response.data.token, response.data.username);
           history.push("/");
