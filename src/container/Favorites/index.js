@@ -9,7 +9,7 @@ import MarvelCard from "../../components/MarvelCard";
 function Favorites({ favComics, favCharacters, updateFavoris, token }) {
   const [toggleCharCom, setToggleCharCom] = useState(false);
   return (
-    <div>
+    <div style={{ position: "absolute", top: 80 }}>
       <div className="toggleWrapper">
         <h3 onClick={() => setToggleCharCom(false)}>Characters</h3>
         <h3 onClick={() => setToggleCharCom(true)}>Comics</h3>

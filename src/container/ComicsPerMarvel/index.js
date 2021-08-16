@@ -20,7 +20,6 @@ function ComicsPerMarvel({ updateFavoris, characterDetails }) {
           `https://marvel-api-node-oliv-dev.herokuapp.com/comics/${id}`
         );
         setData(response.data.comics);
-        console.log(response.data.comics);
       } catch (e) {
         console.log(e);
       }
@@ -29,7 +28,7 @@ function ComicsPerMarvel({ updateFavoris, characterDetails }) {
   }, [id]);
 
   return (
-    <>
+    <div style={{ position: "absolute", top: 80 }}>
       <p>{name}</p>
       <img
         id="marvelPicDescription"
@@ -38,7 +37,7 @@ function ComicsPerMarvel({ updateFavoris, characterDetails }) {
       />
       <p>{description}</p>
       <ComicCard data={data} updateComicInFavoris={updateFavoris} />
-    </>
+    </div>
   );
 }
 

@@ -41,7 +41,10 @@ function SignUp({ setUser }) {
   };
 
   return (
-    <div className="signUp-page wrapper">
+    <div
+      style={{ position: "absolute", top: 80 }}
+      className="signUp-page wrapper"
+    >
       {/* <span>under construction, back undone</span> */}
       <form onSubmit={handleSubmit}>
         <input

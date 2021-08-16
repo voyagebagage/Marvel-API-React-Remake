@@ -1,10 +1,12 @@
 import "./index.css";
+import React, { useState, useEffect } from "react";
 import MarvelCard from "../../components/MarvelCard";
 import Search from "../../components/Search";
 import Pagination from "../../components/Pagination";
+import FirstLoader from "../../components/FirstLoader";
+// import * as THREE from "three";
 
 import axios from "axios";
-import { useState, useEffect } from "react";
 
 function Characters({
   data,
@@ -20,7 +22,7 @@ function Characters({
   setCharacterDetails,
 }) {
   const [isLoading, setIsLoading] = useState(true);
-
+  // const [counter, setCounter] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,8 +43,11 @@ function Characters({
           const response = await axios.get(
             `https://marvel-api-node-oliv-dev.herokuapp.com/characters?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}`
           );
+          // const timer = setTimeout(() => {
           setData(response.data.results);
           setIsLoading(false);
+          // }, 100000);
+          // return () => clearTimeout(timer);
         }
       } catch (e) {
         console.log(e);
@@ -52,7 +57,8 @@ function Characters({
   }, [skip, limit]);
 
   return !isLoading ? (
-    <>
+    <div style={{ position: "absolute", top: 80 }}>
+      {/* <div style={{ position: "relative", top: 80 }}> */}
       <Search
         handleSubmit={handleSubmit}
         value={name}
@@ -61,16 +67,18 @@ function Characters({
         setLimit={setLimit}
       />
       <Pagination skip={skip} setSkip={setSkip} limit={limit} />
-
       <MarvelCard
         data={data}
         setData={setData}
         updateCharacterInFavoris={updateCharacterInFavoris}
         setCharacterDetails={setCharacterDetails}
       />
-    </>
+    </div>
   ) : (
+    // </div>
+    // <div style={{ height: "100vh" }}>
     <span>LoADING</span>
+    // </div>
   );
 }
 

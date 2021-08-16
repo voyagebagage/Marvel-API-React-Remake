@@ -1,5 +1,5 @@
 .character-page {
-  background-color: rgba(175, 60, 60, 0.705);
+  /* background-color: rgba(175, 60, 60, 0.705); */
   color: blueviolet;
   /* height: 100vh; */
   display: flex;
@@ -10,6 +10,8 @@
 .marvelCard {
   width: 15vw;
   border-radius: 10px;
-  border: solid cyan 2px;
+  background-color: rgba(175, 60, 60, 0.322);
+
+  /* border: solid cyan 2px; */
   min-height: 300px;
 }

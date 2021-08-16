@@ -32,7 +32,10 @@ function LogIn({ setUser }) {
   // console.log(response.data);
 
   return (
-    <div className="login-page wrapper">
+    <div
+      style={{ position: "absolute", top: 80 }}
+      className="login-page wrapper"
+    >
       <form onSubmit={handleSubmit}>
         <input
           //   id="input"

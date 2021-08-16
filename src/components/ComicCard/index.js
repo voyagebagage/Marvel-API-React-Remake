@@ -17,7 +17,7 @@ export default function ComicCard({ data, setData, updateComicInFavoris }) {
     }
   };
   return (
-    <div>
+    <div className="comic-card-container">
       {data &&
         data.map((comic, index) => (
           <div className="comicCard" key={comic._id}>

@@ -1,26 +1,29 @@
+//THREEJS
+
 //project imports
 import "./App.css";
+import Header from "./components/Header";
 import Characters from "./container/Characters";
 import Comics from "./container/Comics";
 import Favorites from "./container/Favorites";
 import ComicsPerMarvel from "./container/ComicsPerMarvel";
 import LogIn from "./container/LogIn";
 import SignUp from "./container/SignUp";
+import FirstLoader from "./components/FirstLoader";
 //React imports
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
+
 //package imports
 import axios from "axios";
 import Cookies from "js-cookie";
 //assets
-import headerLogo from "./assets/img/headerLogo.png";
 //fontawesome import
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 library.add(faStar);
 
 function App() {
-  // const [data, setData] = useState([]);
   const [dataCharacters, setDataCharacters] = useState([]);
   const [dataComics, setDataComics] = useState([]);
   const [skipCharacters, setSkipCharacters] = useState(0);
@@ -35,36 +38,38 @@ function App() {
   const [username, setUsername] = useState(Cookies.get("username") || "");
 
   // =================================================================
+
+  // =================================================================
   const handleClickLogOut = () => {
     setToken(null);
     setUsername("");
     Cookies.remove("token");
     Cookies.remove("username");
   };
-  //_________________________________________________________________
+  //_________________AUTH________________________________________________
   const setUser = (userToken, username) => {
     setToken(userToken);
     setUsername(username);
     Cookies.set("token", userToken, { expires: 1 });
     Cookies.set("username", username, { expires: 1 });
   };
-  //_________________________________________________________________
+  //____________SEARCH_CHARACTERS___________________________________________________
   const handleSubmitMarvel = async (e) => {
     e.preventDefault();
     const response = await axios.get(
       `https://marvel-api-node-oliv-dev.herokuapp.com/search-character?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skipCharacters}&name=${name}`
     );
-    setDataCharacters(response.data);
+    setDataCharacters(response.data.results);
     setName("");
   };
 
-  //_________________________________________________________________
+  //_____________SEARCH_COMICS_________________________________________________
   const handleSubmitComic = async (e) => {
     e.preventDefault();
     const response = await axios.get(
       `https://marvel-api-node-oliv-dev.herokuapp.com/search-comic?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skipComics}&title=${title}`
     );
-    setDataComics(response.data);
+    setDataComics(response.data.results);
     setTitle("");
   };
 
@@ -120,88 +125,69 @@ function App() {
   // =================================================================
 
   return (
-    <Router>
-      <div className="header-logo-wrap wrapper">
-        <img src={headerLogo} alt="logomarvel" id="headerLogo" />
-        {token ? (
-          <p>
-            Welcome on my marvel API {username}, enjoy
-            <input type="button" value="log-out" onClick={handleClickLogOut} />
-          </p>
-        ) : (
-          <p>
-            <Link to="/logIn">Log-in/Sign-up</Link>
-          </p>
-        )}
+    <>
+      <FirstLoader />
 
-        <div className="menu">
-          <p>
-            <Link to="/" onClick={() => setLimit(16)}>
-              Characters
-            </Link>
-          </p>
-          <p>
-            <Link to="/comics">Comics</Link>
-          </p>
-          <p>
-            <Link to="/favorites">Favorites</Link>
-          </p>
-        </div>
-      </div>
-
-      <Switch>
-        <Route path="/comics/:characterId">
-          <ComicsPerMarvel
-            updateFavoris={updateFavoris}
-            characterDetails={characterDetails}
-          />
-        </Route>
-        <Route path="/comics">
-          <Comics
-            data={dataComics}
-            setData={setDataComics}
-            skip={skipComics}
-            setSkip={setSkipComics}
-            limit={limit}
-            setLimit={setLimit}
-            title={title}
-            setTitle={setTitle}
-            handleSubmit={handleSubmitComic}
-            updateComicInFavoris={updateFavoris}
-          />
-        </Route>
-        <Route path="/favorites">
-          <Favorites
-            token={token}
-            favComics={favComics}
-            favCharacters={favCharacters}
-            updateFavoris={updateFavoris}
-          />
-        </Route>
-        <Route path="/logIn">
-          <LogIn setUser={setUser} />
-        </Route>
-        <Route path="/signUp">
-          <SignUp setUser={setUser} />
-        </Route>
-        <Route path="/">
-          <Characters
-            // favCharacters={favCharacters}
-            data={dataCharacters}
-            setData={setDataCharacters}
-            skip={skipCharacters}
-            setSkip={setSkipCharacters}
-            limit={limit}
-            setLimit={setLimit}
-            name={name}
-            setName={setName}
-            setCharacterDetails={setCharacterDetails}
-            handleSubmit={handleSubmitMarvel}
-            updateCharacterInFavoris={updateFavoris}
-          />
-        </Route>
-      </Switch>
-    </Router>
+      <Router>
+        <Header
+          token={token}
+          username={username}
+          setLimit={setLimit}
+          handleClickLogOut={handleClickLogOut}
+        />
+        <Switch>
+          <Route path="/comics/:characterId">
+            <ComicsPerMarvel
+              updateFavoris={updateFavoris}
+              characterDetails={characterDetails}
+            />
+          </Route>
+          <Route path="/comics">
+            <Comics
+              data={dataComics}
+              setData={setDataComics}
+              skip={skipComics}
+              setSkip={setSkipComics}
+              limit={limit}
+              setLimit={setLimit}
+              title={title}
+              setTitle={setTitle}
+              handleSubmit={handleSubmitComic}
+              updateComicInFavoris={updateFavoris}
+            />
+          </Route>
+          <Route path="/favorites">
+            <Favorites
+              token={token}
+              favComics={favComics}
+              favCharacters={favCharacters}
+              updateFavoris={updateFavoris}
+            />
+          </Route>
+          <Route path="/logIn">
+            <LogIn setUser={setUser} />
+          </Route>
+          <Route path="/signUp">
+            <SignUp setUser={setUser} />
+          </Route>
+          <Route path="/">
+            <Characters
+              data={dataCharacters}
+              setData={setDataCharacters}
+              skip={skipCharacters}
+              setSkip={setSkipCharacters}
+              limit={limit}
+              setLimit={setLimit}
+              name={name}
+              setName={setName}
+              setCharacterDetails={setCharacterDetails}
+              handleSubmit={handleSubmitMarvel}
+              updateCharacterInFavoris={updateFavoris}
+            />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 

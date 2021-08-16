@@ -48,12 +48,12 @@ function Comics({
       }
     };
     fetchData();
-  }, [skip, data, limit, setData, title]);
+  }, [skip, limit]);
 
   return isLoading ? (
     <div>Loading</div>
   ) : (
-    <div className="comics-page">
+    <div style={{ position: "absolute", top: 80 }} className="comics-page">
       <Search
         handleSubmit={handleSubmit}
         value={title}
