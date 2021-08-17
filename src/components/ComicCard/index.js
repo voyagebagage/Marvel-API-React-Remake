@@ -17,18 +17,18 @@ export default function ComicCard({ data, setData, updateComicInFavoris }) {
     }
   };
   return (
-    <div className="comic-card-container">
+    <div className="comic-card-component wrapper">
       {data &&
         data.map((comic, index) => (
           <div className="comicCard" key={comic._id}>
-            <p>{index + 1}</p>
+            <p className="number">{index + 1}</p>
             <img
               id="comicPic"
               src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
               alt={"comic"}
             />
             <div>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div className="card-text-container">
                 <p className="title">{comic.title}</p>
                 <FontAwesomeIcon
                   icon="star"
@@ -37,8 +37,8 @@ export default function ComicCard({ data, setData, updateComicInFavoris }) {
                     comic.active
                       ? {
                           color: "gold",
-                          height: 20,
-                          width: 20,
+                          height: 30,
+                          width: 30,
                         }
                       : { color: "lightgrey", height: 30, width: 30 }
                   }

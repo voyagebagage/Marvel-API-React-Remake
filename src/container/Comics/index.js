@@ -53,7 +53,10 @@ function Comics({
   return isLoading ? (
     <div>Loading</div>
   ) : (
-    <div style={{ position: "absolute", top: 80 }} className="comics-page">
+    <div
+      style={{ position: "absolute", top: 80 }}
+      className="comics-page wrapper"
+    >
       <Search
         handleSubmit={handleSubmit}
         value={title}

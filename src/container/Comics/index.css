@@ -1,5 +1,9 @@
 .comics-page {
   /* background-color: rgba(54, 86, 228, 0.705); */
-  /* position: absolute;
-  top: 80; */
+  position: absolute;
+  top: 80;
+  left: 10%;
+  right: 10%;
+  /* padding-top: 3vh; */
+  /* padding-bottom: 3vh; */
 }

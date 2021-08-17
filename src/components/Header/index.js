@@ -11,7 +11,7 @@ export default function Header({
   handleClickLogOut,
 }) {
   return (
-    <div className="skybox-wrapper wrapper">
+    <div className="skybox-wrapper">
       <div className="header-logo-wrap wrapper">
         <Link to="/">
           <img src={headerLogo} alt="logomarvel" id="headerLogo" />
