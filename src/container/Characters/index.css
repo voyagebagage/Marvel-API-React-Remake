@@ -1,17 +1,31 @@
 .character-page {
   /* background-color: rgba(175, 60, 60, 0.705); */
   color: blueviolet;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   row-gap: 30px;
+  gap: 40px;
+  /* border: red solid 5px; */
+  overflow-y: scroll;
+  padding: 5.3vh;
 }
 .marvelCard {
   width: 15vw;
   border-radius: 10px;
-  background-color: rgba(175, 60, 60, 0.322);
-
+  background-color: rgba(175, 60, 60, 0.582);
+  flex-shrink: 0;
   /* border: solid cyan 2px; */
   min-height: 300px;
+}
+
+.marvelCard:hover {
+  transform: scale(1.06);
+  box-shadow: 1px 5px 60px 3px rgba(221, 208, 24, 0.61);
+  cursor: pointer;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }

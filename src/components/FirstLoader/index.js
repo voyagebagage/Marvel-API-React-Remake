@@ -99,11 +99,21 @@ function FirstLoader() {
       >
         <SkyBox />
         {/* <Stars /> */}
-        {/* <PerspectiveCamera /> */}
-        <OrbitControls />
-        {/* <ambientLight intensity={0.4} />
-        <spotLight position={[10, 15, 10]} angle={0.7} /> */}
-        {/* <Html fullscreen>
+        <PerspectiveCamera />
+        <OrbitControls autoRotate={true} autoRotateSpeed={0.3} />
+        <ambientLight intensity={0.4} />
+        <spotLight position={[10, 15, 10]} angle={0.7} />
+
+        {/* <pointLight position={[-100, 0, -160]} />
+        <pointLight position={[0, 0, -170]} />
+        <pointLight position={[100, 0, -160]} /> */}
+      </Canvas>
+    </>
+  );
+}
+export default FirstLoader;
+{
+  /* <Html fullscreen>
           <div className="container3DText">
             <h1>{text}</h1>
           </div>
@@ -122,13 +132,8 @@ function FirstLoader() {
               <meshPhongMaterial attach="material" color={opts.color} />
             ) : null}
           </text>
-        </mesh> */}
-        {/* <Plane /> */}
-        {/* <pointLight position={[-100, 0, -160]} />
-        <pointLight position={[0, 0, -170]} />
-        <pointLight position={[100, 0, -160]} /> */}
-      </Canvas>
-    </>
-  );
+        </mesh> */
 }
-export default FirstLoader;
+{
+  /* <Plane /> */
+}
