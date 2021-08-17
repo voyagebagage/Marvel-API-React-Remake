@@ -25,7 +25,7 @@ export default function MarvelCard({
   };
 
   return (
-    <div className="character-page wrapper">
+    <div className="character-component wrapper">
       {data.map((oneMarvel, index) => {
         const { name, thumbnail, description } = oneMarvel;
         return (

@@ -21,3 +21,16 @@
 .goldIcon {
   color: "gold";
 }
+.character-component {
+  /* background-color: rgba(175, 60, 60, 0.705); */
+  color: blueviolet;
+  height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 30px;
+  gap: 40px;
+  /* border: red solid 5px; */
+  overflow-y: scroll;
+  padding: 5.3vh;
+}

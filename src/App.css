@@ -9,14 +9,25 @@
   height: 65px;
   background-color: rgba(255, 0, 0, 0.822);
   width: 100%;
-  position: absolute;
+  position: relative;
   top: 0;
-  left: 100;
+  /* max-width: 1200px;
+  margin: 0 auto; */
+  /* left: 100; */
   /* transform: translate(0%, 0%); */
 }
 
 #headerLogo {
   height: 100%;
+}
+.skybox-wrapper {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  /* max-width: 1200px;
+  margin: 0 auto; */
+  /* width: 100%; */
 }
 .menu {
   /* border: solid black 1px; */
@@ -39,12 +50,17 @@ html,
   height: 100%;
 }
 
-.menu p {
+.menu {
   text-decoration: none;
+  margin-right: 2vw;
 }
+
 #icon {
   cursor: pointer;
 }
 .star {
   cursor: pointer;
+}
+input {
+  outline: none;
 }

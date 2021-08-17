@@ -57,8 +57,7 @@ function Characters({
   }, [skip, limit]);
 
   return !isLoading ? (
-    <div style={{ position: "absolute", top: 80 }}>
-      {/* <div style={{ position: "relative", top: 80 }}> */}
+    <div style={{ position: "absolute", top: 80 }} id="character-page">
       <Search
         handleSubmit={handleSubmit}
         value={name}

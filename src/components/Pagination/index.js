@@ -1,6 +1,6 @@
 export default function Pagination({ skip, setSkip, limit }) {
   return (
-    <>
+    <div className="wrapper">
       <input
         type="button"
         value="<<<"
@@ -27,6 +27,6 @@ export default function Pagination({ skip, setSkip, limit }) {
         value=">>>"
         onClick={() => setSkip(skip + 20 * limit)}
       />
-    </>
+    </div>
   );
 }
