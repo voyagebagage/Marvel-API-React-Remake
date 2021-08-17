@@ -41,7 +41,10 @@ function Favorites({ favComics, favCharacters, updateFavoris, token }) {
           )
         ) : (
           <p>
-            to see your favorites <Link to="/logIn">Login</Link>
+            to see your favorites{" "}
+            <Link className="link-text" to="/logIn">
+              Log-In
+            </Link>
           </p>
         )}
       </div>

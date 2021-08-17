@@ -23,7 +23,7 @@ export default function Search({
           setLimit(100);
         }}
       />
-      <input type="submit" value="SEARCH" id="search-button" />
+      <input type="submit" value="Search" id="search-button" />
     </form>
     // </div>
   );

@@ -32,30 +32,32 @@ function LogIn({ setUser }) {
   // console.log(response.data);
 
   return (
-    <div
-      style={{ position: "absolute", top: 80 }}
-      className="login-page wrapper"
-    >
-      <form onSubmit={handleSubmit}>
+    <>
+      <form
+        onSubmit={handleSubmit}
+        style={{ position: "absolute", top: "40%" }}
+        className="login-page"
+      >
         <input
-          //   id="input"
+          autoFocus
           placeholder="email or username"
           type="text"
           onChange={(e) => setFirstField(e.target.value)}
         />
         <input
-          //   id="input"
           placeholder="password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
         <input type="submit" value="Log In" />
         <span>
-          or
-          <Link to="/signUp"> create an account</Link>
+          or{" "}
+          <Link className="link-text" to="/signUp">
+            create an account
+          </Link>
         </span>
       </form>
-    </div>
+    </>
   );
 }
 

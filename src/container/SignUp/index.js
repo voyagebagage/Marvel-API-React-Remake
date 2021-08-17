@@ -41,35 +41,33 @@ function SignUp({ setUser }) {
   };
 
   return (
-    <div
-      style={{ position: "absolute", top: 80 }}
-      className="signUp-page wrapper"
+    <form
+      onSubmit={handleSubmit}
+      style={{ position: "absolute", top: "40%" }}
+      className="signUp-page"
     >
-      {/* <span>under construction, back undone</span> */}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="confirm password"
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <input type="submit" value="Sign up and welcome" />
-      </form>
-    </div>
+      <input
+        type="text"
+        placeholder="username"
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="email"
+        placeholder="email"
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="confirm password"
+        onChange={(e) => setConfirmPassword(e.target.value)}
+      />
+      <input type="submit" value="Sign up and welcome" />
+    </form>
   );
 }
 

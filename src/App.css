@@ -38,11 +38,22 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 1vw;
   /* text-decoration: none; */
 }
+.menu > p:hover {
+  display: flex;
+  padding: 1vw;
+  border-bottom: 5px solid rgba(185, 29, 29, 0.733);
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1.05);
+}
 
-div {
+* {
   box-sizing: border-box;
 }
 body,
@@ -67,6 +78,10 @@ html,
 }
 input {
   outline: none;
+  font-size: 24px;
+  font-weight: 500;
+  /* line-height: 3; */
+  color: rgb(0, 255, 179);
 }
 .number {
   /* display: flex; */
@@ -75,4 +90,15 @@ input {
   font-size: large;
   /* text-align: center; */
   /* justify-content: center; */
+}
+input::-webkit-input-placeholder {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 3;
+  color: rgba(0, 255, 179, 0.534);
+}
+.link-text {
+  /* font-size: 34; */
+  font-size: larger;
+  font-weight: bold;
 }

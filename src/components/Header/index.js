@@ -23,7 +23,7 @@ export default function Header({
           </p>
         ) : (
           <p>
-            <Link className="noDecoration" to="/logIn">
+            <Link className="noDecoration link-text" to="/logIn">
               Log-in/Sign-up
             </Link>
           </p>
@@ -31,17 +31,21 @@ export default function Header({
 
         <div className="menu">
           <p>
-            <Link className="noDecoration" to="/" onClick={() => setLimit(16)}>
+            <Link
+              className="noDecoration link-text"
+              to="/"
+              onClick={() => setLimit(16)}
+            >
               Characters
             </Link>
           </p>
           <p>
-            <Link className="noDecoration" to="/comics">
+            <Link className="noDecoration link-text" to="/comics">
               Comics
             </Link>
           </p>
           <p>
-            <Link className="noDecoration" to="/favorites">
+            <Link className="noDecoration link-text" to="/favorites">
               Favorites
             </Link>
           </p>
