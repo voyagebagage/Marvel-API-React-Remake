@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import MarvelCard from "../../components/MarvelCard";
 import Search from "../../components/Search";
 import Pagination from "../../components/Pagination";
-import FirstLoader from "../../components/FirstLoader";
 // import * as THREE from "three";
 
 import axios from "axios";
@@ -57,7 +56,7 @@ function Characters({
   }, [skip, limit]);
 
   return !isLoading ? (
-    <div style={{ position: "absolute", top: 80 }} id="character-page">
+    <div style={{ position: "absolute", top: 80 }} className="character-page">
       <Search
         handleSubmit={handleSubmit}
         value={name}

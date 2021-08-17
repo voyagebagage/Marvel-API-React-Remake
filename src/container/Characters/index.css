@@ -1,4 +1,4 @@
-#character-page {
+.character-page {
   position: absolute;
   top: 80;
   left: 10%;
@@ -10,7 +10,7 @@
   background-color: rgba(223, 41, 41, 0.568);
   flex-shrink: 0;
   /* border: solid cyan 2px; */
-  min-height: 300px;
+  /* min-height: 300px; */
 }
 
 .marvelCard:hover {

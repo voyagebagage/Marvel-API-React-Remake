@@ -2,6 +2,7 @@
 
 //project imports
 import "./App.css";
+import FirstLoader from "./components/FirstLoader";
 import Header from "./components/Header";
 import Characters from "./container/Characters";
 import Comics from "./container/Comics";
@@ -9,7 +10,7 @@ import Favorites from "./container/Favorites";
 import ComicsPerMarvel from "./container/ComicsPerMarvel";
 import LogIn from "./container/LogIn";
 import SignUp from "./container/SignUp";
-import FirstLoader from "./components/FirstLoader";
+
 //React imports
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
@@ -127,7 +128,6 @@ function App() {
   return (
     <>
       <FirstLoader />
-
       <Router>
         <Header
           token={token}

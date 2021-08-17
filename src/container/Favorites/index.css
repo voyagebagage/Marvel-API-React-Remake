@@ -1,9 +1,26 @@
 .toggleWrapper {
+  position: absolute;
+  top: 80;
+  left: 10%;
+  right: 10%;
   display: flex;
+  color: white;
+  justify-content: space-evenly;
+  gap: 1vw;
+  /* border: 3px solid rgb(229, 255, 0); */
 }
 .toggleWrapper h3:hover {
   cursor: pointer;
+  box-shadow: 1px 5px 1px 10px rgba(0, 255, 64, 0.37);
 }
 .toggleWrapper h3 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   flex: 1;
+  background-color: rgba(164, 44, 168, 0.342);
+  min-height: 6.5vh;
+  padding-left: 1vw;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 64, 0.37);
 }

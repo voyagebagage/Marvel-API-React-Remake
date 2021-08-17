@@ -18,6 +18,7 @@
   font-size: large;
   font-weight: 500;
   padding-left: 0.4vw;
+
   border: 0.3px solid rgba(0, 0, 0, 0.644);
   background-color: rgba(247, 244, 244, 0.582);
   border-radius: 4px;
@@ -25,11 +26,17 @@
 #search-button {
   flex: 0.5;
   padding-left: 2vw;
-  border: solid 0.2 px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(18, 19, 18, 0.37);
   /* text-align: center; */
   border-radius: 4px;
   color: white;
   /* font-size: large; */
   font-weight: 600;
+  /* background-color: rgba(164, 44, 168, 0.342); */
+
   background-color: rgba(197, 35, 189, 0.596);
+}
+#search-button:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 2px 3px rgba(30, 32, 30, 0.37);
 }
