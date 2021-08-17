@@ -28,13 +28,13 @@ function SkyBox() {
   const loader = new CubeTextureLoader();
   // The CubeTextureLoader load method takes an array of urls representing all 6 sides of the cube.
   const texture = loader.load([
-    // "1.png",
+    "1.png",
     "2.png",
     "3.png",
     "4.png",
     "5.png",
     "6.png",
-    "7.png",
+    // "7.png",
   ]);
 
   // Set the scene background property to the resulting texture.
@@ -98,11 +98,11 @@ function FirstLoader() {
         onMouseMove={onMouseMove}
       >
         <SkyBox />
-        <Stars />
-        <PerspectiveCamera />
+        {/* <Stars /> */}
+        {/* <PerspectiveCamera /> */}
         <OrbitControls />
-        <ambientLight intensity={0.4} />
-        <spotLight position={[10, 15, 10]} angle={0.7} />
+        {/* <ambientLight intensity={0.4} />
+        <spotLight position={[10, 15, 10]} angle={0.7} /> */}
         {/* <Html fullscreen>
           <div className="container3DText">
             <h1>{text}</h1>

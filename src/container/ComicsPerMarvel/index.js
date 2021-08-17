@@ -9,8 +9,8 @@ import axios from "axios";
 function ComicsPerMarvel({ updateFavoris, characterDetails }) {
   const [data, setData] = useState([]);
   const params = useParams();
-  const id = params.characterId;
-
+  // const id = params.characterId;
+  const [id, setId] = useState(params.characterId);
   const { name, thumbnail, description } = characterDetails;
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function ComicsPerMarvel({ updateFavoris, characterDetails }) {
   }, [id]);
 
   return (
-    <div style={{ position: "absolute", top: 80 }}>
+    <div style={{ position: "absolute", top: 80, backgroundColor: "blue" }}>
       <p>{name}</p>
       <img
         id="marvelPicDescription"
