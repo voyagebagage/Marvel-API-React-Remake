@@ -34,9 +34,8 @@ function SkyBox() {
     "4.png",
     "5.png",
     "6.png",
-    // "7.png",
   ]);
-
+  // console.log("SKYBOX------------");
   // Set the scene background property to the resulting texture.
   scene.background = texture;
   return null;
@@ -54,8 +53,6 @@ function FirstLoader() {
   //     textAlign: "justify",
   //     materialType: "MeshPhongMaterial",
   //   });
-
-  //   console.log(<Skybox />);
 
   //   loader.load("fonts/helvetiker_regular.typeface.json", function (font) {
   //     const geometry = new THREE.TextGeometry("MARVEL", {
@@ -98,7 +95,6 @@ function FirstLoader() {
         onMouseMove={onMouseMove}
       >
         <SkyBox />
-        {/* <Stars /> */}
         <PerspectiveCamera />
         <OrbitControls autoRotate={true} autoRotateSpeed={0.3} />
         <ambientLight intensity={0.4} />

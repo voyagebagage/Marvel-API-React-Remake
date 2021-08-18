@@ -31,7 +31,7 @@ function Characters({
         );
 
         //_____here we load favorites if there are any  & setData___________
-        isThereFavInTheBrowser(response.data.results, setData);
+        isThereFavInTheBrowser(response.data.results, setData, "characters");
         //_____for later to make an animated intro___________
         // const timer = setTimeout(() => {
         setIsLoading(false);

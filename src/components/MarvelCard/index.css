@@ -1,3 +1,19 @@
+.nameBar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1vh;
+  padding-right: 1.5vh;
+  max-height: 5vh;
+}
+.marvelName {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  color: rgba(255, 217, 0, 0.822);
+}
 #marvelPic {
   height: 18vh;
   width: 100%;
@@ -9,6 +25,10 @@
   text-overflow: ellipsis;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  padding-left: 0.8vw;
+  padding-right: 0.8vw;
+  height: 1 em;
+  text-align: left;
 }
 .noDecoration {
   text-decoration: none;
@@ -22,7 +42,6 @@
   color: "gold";
 }
 .character-component {
-  /* background-color: rgba(175, 60, 60, 0.705); */
   color: blueviolet;
   height: 80vh;
   display: flex;
@@ -30,7 +49,9 @@
   justify-content: space-around;
   row-gap: 30px;
   gap: 40px;
-  /* border: red solid 5px; */
   overflow-y: scroll;
   padding: 5.3vh;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox 64 */
 }

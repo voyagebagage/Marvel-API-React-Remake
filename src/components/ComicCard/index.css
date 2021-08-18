@@ -1,6 +1,7 @@
 .title {
   color: black;
-  /* border: blue solid 3px; */
+  font-size: 1.25em;
+  font-weight: 400;
 }
 #comicPic {
   height: 20vh;
@@ -18,15 +19,21 @@
   cursor: pointer;
 }
 .comic-card-component {
-  /* overflow: hidden; */
-  /* display: flex; */
   flex-wrap: wrap;
   /* border: solid cyan 5px; */
   overflow-y: scroll;
   height: 80vh;
   padding: 5.3vh;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox 64 */
 }
 .card-text-container {
   display: flex;
   justify-content: space-between;
+}
+.descrpition {
+  font-weight: 300;
+  padding-right: 2vw;
+  text-align: justify;
 }

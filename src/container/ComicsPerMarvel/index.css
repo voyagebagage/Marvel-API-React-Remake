@@ -1,3 +1,21 @@
 #marvelPicDescription {
   height: 30vh;
 }
+.comics-per-marvel-page {
+  position: absolute;
+  top: 12%;
+  left: 10%;
+  right: 10%;
+  padding: 1vw;
+  background-color: rgba(2, 2, 2, 0.733);
+  height: 100%;
+  width: 100vw;
+  /* margin: 50%; */
+  overflow-y: scroll;
+}
+.characterDetails {
+  padding-right: 5vh;
+  padding-left: 5vh;
+  /* padding-bottom: 0;
+  padding-top: 0; */
+}

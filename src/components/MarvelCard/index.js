@@ -30,8 +30,8 @@ export default function MarvelCard({
         const { name, thumbnail, description } = oneMarvel;
         return (
           <div className="marvelCard" key={oneMarvel._id}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <p>{name}</p>
+            <div className="nameBar-container">
+              <h3 className="marvelName">{name}</h3>
               <FontAwesomeIcon
                 className="star"
                 icon="star"

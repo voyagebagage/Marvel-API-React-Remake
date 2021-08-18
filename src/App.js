@@ -11,7 +11,6 @@ import ComicsPerMarvel from "./container/ComicsPerMarvel";
 import LogIn from "./container/LogIn";
 import SignUp from "./container/SignUp";
 import { parseStorageCharacters, parseStorageComics } from "./Lib";
-
 //React imports
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
@@ -144,6 +143,7 @@ function App() {
               characterDetails={characterDetails}
             />
           </Route>
+
           <Route path="/comics">
             <Comics
               data={dataComics}

@@ -1,0 +1,39 @@
+.header-logo-wrap {
+  display: flex;
+  justify-content: space-between;
+  max-height: 7vh;
+  width: 100%;
+  left: 10%;
+  right: 10%;
+}
+#headerLogo {
+  max-height: 7vh;
+}
+.skybox-wrapper {
+  position: absolute;
+  top: 0;
+  background-color: rgba(255, 0, 0, 0.822);
+  width: 100vw;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  text-decoration: none;
+  margin-right: 2vw;
+}
+.menu > p:hover:active {
+  display: flex;
+  padding: 1vw;
+  border-bottom: 5px solid rgba(185, 29, 29, 0.733);
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1.05);
+}
+.menu > .link-text {
+  color: white;
+}

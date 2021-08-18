@@ -7,16 +7,10 @@
   border-radius: 10px;
   background-color: rgba(223, 41, 41, 0.568);
   flex-shrink: 0;
-  /* border: solid cyan 2px; */
-  /* min-height: 300px; */
 }
 
 .marvelCard:hover {
   transform: scale(1.05);
   box-shadow: 1px 5px 55px 10px rgba(221, 208, 24, 0.603);
   cursor: pointer;
-}
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
 }

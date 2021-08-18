@@ -1,5 +1,11 @@
-export const isThereFavInTheBrowser = (data, setData) => {
-  let parseStorage = JSON.parse(localStorage.getItem("favMarvels"));
+export const isThereFavInTheBrowser = (data, setData, whereFrom) => {
+  let parseStorage;
+  if (whereFrom === "characters") {
+    parseStorage = JSON.parse(localStorage.getItem("favMarvels"));
+  }
+  if (whereFrom === "comics") {
+    parseStorage = JSON.parse(localStorage.getItem("favComics"));
+  }
   if (parseStorage && parseStorage.length !== 0) {
     data.forEach((elemData) => {
       parseStorage.forEach((eParseStorage) => {
