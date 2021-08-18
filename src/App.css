@@ -102,3 +102,34 @@ input::-webkit-input-placeholder {
   font-size: larger;
   font-weight: bold;
 }
+.pagination {
+  display: flex;
+  align-items: center;
+
+  /* flex-direction: column; */
+}
+.paginationStyle input {
+  border: none;
+  /* border-left: red 2px solid; */
+  background-color: transparent;
+  font-size: x-large;
+  font-weight: 600;
+  /* height: 19%; */
+  /* flex-direction: column; */
+}
+.paginationStyle {
+  display: flex;
+  /* border: red 3px solid; */
+}
+.paginationLeft {
+  margin-left: -6%;
+}
+.paginationLeft input {
+  border-left: rgba(255, 0, 0, 0.5) 3px solid;
+}
+.paginationRight input {
+  border-right: rgba(255, 0, 0, 0.5) 3px solid;
+}
+.paginationRight {
+  margin-right: -6%;
+}

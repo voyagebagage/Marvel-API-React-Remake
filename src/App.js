@@ -10,6 +10,7 @@ import Favorites from "./container/Favorites";
 import ComicsPerMarvel from "./container/ComicsPerMarvel";
 import LogIn from "./container/LogIn";
 import SignUp from "./container/SignUp";
+import { parseStorageCharacters, parseStorageComics } from "./Lib";
 
 //React imports
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -32,8 +33,10 @@ function App() {
   const [limit, setLimit] = useState(16);
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
-  const [favCharacters, setFavCharacters] = useState([]);
-  const [favComics, setFavComics] = useState([]);
+  const [favCharacters, setFavCharacters] = useState(
+    parseStorageCharacters || []
+  );
+  const [favComics, setFavComics] = useState(parseStorageComics || []);
   const [characterDetails, setCharacterDetails] = useState({});
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [username, setUsername] = useState(Cookies.get("username") || "");
@@ -63,7 +66,6 @@ function App() {
     setDataCharacters(response.data.results);
     setName("");
   };
-
   //_____________SEARCH_COMICS_________________________________________________
   const handleSubmitComic = async (e) => {
     e.preventDefault();
