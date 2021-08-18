@@ -19,7 +19,12 @@ export default function Header({
         {token ? (
           <p>
             Welcome on my marvel API {username}, enjoy
-            <input type="button" value="log-out" onClick={handleClickLogOut} />
+            <input
+              type="button"
+              value="log-out"
+              className="log-out"
+              onClick={handleClickLogOut}
+            />
           </p>
         ) : (
           <p>

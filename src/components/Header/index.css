@@ -37,3 +37,9 @@
 .menu > .link-text {
   color: white;
 }
+.log-out {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+}

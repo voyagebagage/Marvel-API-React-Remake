@@ -9,6 +9,7 @@
 .comicCard {
   display: flex;
   flex-shrink: 0;
+  min-width: 355px;
   background-color: rgba(239, 241, 243, 0.404);
   gap: 20px;
   margin-top: 1vh;
@@ -21,6 +22,8 @@
 .comic-card-component {
   flex-wrap: wrap;
   /* border: solid cyan 5px; */
+  min-width: 395px;
+
   overflow-y: scroll;
   height: 80vh;
   padding: 5.3vh;
