@@ -6,6 +6,7 @@
   width: 15vw;
   max-width: 236px;
   min-width: 130px;
+  min-height: 305px;
   border-radius: 10px;
   background-color: rgba(223, 41, 41, 0.568);
   flex-shrink: 0;
