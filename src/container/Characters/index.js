@@ -11,6 +11,7 @@ import axios from "axios";
 function Characters({
   data,
   setData,
+  setFavCharacters,
   skip,
   setSkip,
   limit,
@@ -31,7 +32,12 @@ function Characters({
         );
 
         //_____here we load favorites if there are any  & setData___________
-        isThereFavInTheBrowser(response.data.results, setData, "characters");
+        isThereFavInTheBrowser(
+          response.data.results,
+          setData,
+          // setFavCharacters,
+          "characters"
+        );
         //_____for later to make an animated intro___________
         // const timer = setTimeout(() => {
         setIsLoading(false);

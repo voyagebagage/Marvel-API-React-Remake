@@ -28,15 +28,8 @@ function ComicsPerMarvel({ updateFavoris, characterDetails }) {
   }, [id]);
 
   return (
-    <div
-      className="comicsPerMarvel-wrapper"
-      // style={{ position: "absolute", top: 0 }}
-    >
-      <div
-        className="comics-per-marvel-page wrapper"
-        // style={{ position: "absolute", top: "12%" }}
-        // style={{ backgroundColor: "blue" }}
-      >
+    <div className="comicsPerMarvel-wrapper">
+      <div className="comics-per-marvel-page wrapper">
         <div className="characterDetails">
           <h3 className="marvelName">{name}</h3>
           <img

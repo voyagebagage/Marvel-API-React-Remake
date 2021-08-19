@@ -11,6 +11,7 @@ import { isThereFavInTheBrowser } from "../../Lib";
 function Comics({
   data,
   setData,
+  setFavComics,
   skip,
   setSkip,
   limit,
@@ -29,7 +30,12 @@ function Comics({
           `https://marvel-api-node-oliv-dev.herokuapp.com/comics?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}&title=${title}`
         );
         //_____here we load favorites if there are any  & setData___________
-        isThereFavInTheBrowser(response.data.results, setData, "comics");
+        isThereFavInTheBrowser(
+          response.data.results,
+          setData,
+          // setFavComics,
+          "comics"
+        );
         setIsLoading(false);
       } catch (e) {
         console.log(e);

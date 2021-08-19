@@ -97,14 +97,11 @@ function App() {
         if (whereFrom === "character") {
           newTab.splice(favCharacters.indexOf(item), 1);
           await setFavCharacters(newTab);
-          await localStorage.setItem(
-            "favMarvels",
-            JSON.stringify(favCharacters)
-          );
+          await localStorage.setItem("favMarvels", JSON.stringify(newTab));
         } else if (whereFrom === "comic") {
           newTab.splice(favComics.indexOf(item), 1);
           await setFavComics(newTab);
-          await localStorage.setItem("favComics", JSON.stringify(favComics));
+          await localStorage.setItem("favComics", JSON.stringify(newTab));
         }
 
         //ADD FAV <----------------------------------------------------
@@ -119,6 +116,7 @@ function App() {
           await localStorage.setItem("favComics", stringFav);
         }
       }
+      console.log(favCharacters, "------");
     } catch (error) {
       console.log("-------------you got a saving issue!-----------");
     }
@@ -148,6 +146,7 @@ function App() {
             <Comics
               data={dataComics}
               setData={setDataComics}
+              setFavComics={setFavComics}
               skip={skipComics}
               setSkip={setSkipComics}
               limit={limit}
@@ -162,7 +161,9 @@ function App() {
             <Favorites
               token={token}
               favComics={favComics}
+              setFavComics={setFavComics}
               favCharacters={favCharacters}
+              setFavCharacters={setFavCharacters}
               updateFavoris={updateFavoris}
             />
           </Route>
@@ -176,6 +177,7 @@ function App() {
             <Characters
               data={dataCharacters}
               setData={setDataCharacters}
+              setFavCharacters={setFavCharacters}
               skip={skipCharacters}
               setSkip={setSkipCharacters}
               limit={limit}

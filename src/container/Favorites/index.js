@@ -6,8 +6,15 @@ import "./index.css";
 import ComicCard from "../../components/ComicCard";
 import MarvelCard from "../../components/MarvelCard";
 
-function Favorites({ favComics, favCharacters, updateFavoris, token }) {
+function Favorites({
+  favComics,
+  // setFavComics,
+  favCharacters,
+  updateFavoris,
+  token,
+}) {
   const [toggleCharCom, setToggleCharCom] = useState(false);
+  console.log(favCharacters);
   return (
     <>
       <div
@@ -25,7 +32,7 @@ function Favorites({ favComics, favCharacters, updateFavoris, token }) {
       >
         {token ? (
           !toggleCharCom ? (
-            favCharacters.length ? (
+            favCharacters && favCharacters.length ? (
               <MarvelCard
                 data={favCharacters}
                 updateCharacterInFavoris={updateFavoris}
