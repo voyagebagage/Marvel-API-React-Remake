@@ -28,25 +28,28 @@ function ComicsPerMarvel({ updateFavoris, characterDetails }) {
   }, [id]);
 
   return (
-    // <div className="bGColor">
     <div
-      className="comics-per-marvel-page wrapper"
-      style={{ position: "absolute", top: "12%" }}
-      // style={{ backgroundColor: "blue" }}
+      className="comicsPerMarvel-wrapper"
+      // style={{ position: "absolute", top: 0 }}
     >
-      <div className="characterDetails">
-        <h3 className="marvelName">{name}</h3>
-        <img
-          id="marvelPicDescription"
-          src={`${thumbnail.path}.${thumbnail.extension}`}
-          alt=""
-        />
-        <p>{description}</p>
-      </div>
+      <div
+        className="comics-per-marvel-page wrapper"
+        // style={{ position: "absolute", top: "12%" }}
+        // style={{ backgroundColor: "blue" }}
+      >
+        <div className="characterDetails">
+          <h3 className="marvelName">{name}</h3>
+          <img
+            id="marvelPicDescription"
+            src={`${thumbnail.path}.${thumbnail.extension}`}
+            alt=""
+          />
+          <p>{description}</p>
+        </div>
 
-      <ComicCard data={data} updateComicInFavoris={updateFavoris} />
+        <ComicCard data={data} updateComicInFavoris={updateFavoris} />
+      </div>
     </div>
-    // </div>
   );
 }
 

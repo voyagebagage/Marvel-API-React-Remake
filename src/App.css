@@ -49,7 +49,12 @@ input::-webkit-input-placeholder {
 }
 .link-text {
   font-size: larger;
-  font-weight: bold;
+}
+
+.menu .link-text {
+  /* color: rgba(255, 217, 0, 0.822); */
+  font-weight: 100;
+  font-size: x-large;
 }
 .pagination {
   display: flex;
